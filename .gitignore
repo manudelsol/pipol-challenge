@@ -1,0 +1,11 @@
+api/venv/
+api/.env
+
+swagger/venv/
+swagger/.env
+
+.idea
+
+.DS_Store
+
+__pycache__/
