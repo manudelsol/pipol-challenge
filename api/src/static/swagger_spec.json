@@ -1,0 +1,132 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "GraphQL Product Data API",
+    "description": "API for querying product data using GraphQL",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/graphql": {
+      "post": {
+        "summary": "Query product data",
+        "description": "Fetch product data using GraphQL.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "example": "query { productData(descGaSkuProducto: \"K\") { idTieFechaValor descGaSkuProducto } }"
+                  },
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "product_data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id_tie_fecha_valor": { "type": "string", "format": "date" },
+                              "id_cli_cliente": { "type": "string" },
+                              "id_ga_vista": { "type": "string" },
+                              "id_ga_tipo_dispositivo": { "type": "string" },
+                              "id_ga_fuente_medio": { "type": "string" },
+                              "desc_ga_sku_producto": { "type": "string" },
+                              "desc_ga_categoria_producto": { "type": "string" },
+                              "fc_agregado_carrito_cant": { "type": "string" },
+                              "fc_ingreso_producto_monto": { "type": "string" },
+                              "fc_retirado_carrito_cant": { "type": "string" },
+                              "fc_detalle_producto_cant": { "type": "string" },
+                              "fc_producto_cant": { "type": "string" },
+                              "desc_ga_nombre_producto": { "type": "string" },
+                              "fc_visualizaciones_pag_cant": { "type": "string" },
+                              "flag_pipol": { "type": "string" },
+                              "SASASA": { "type": "string" },
+                              "id_ga_producto": { "type": "string" },
+                              "desc_ga_nombre_producto_1": { "type": "string" },
+                              "desc_ga_sku_producto_1": { "type": "string" },
+                              "desc_ga_marca_producto": { "type": "string" },
+                              "desc_ga_cod_producto": { "type": "string" },
+                              "desc_categoria_producto": { "type": "string" },
+                              "desc_categoria_prod_principal": { "type": "string" }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Product Found": {
+                    "summary": "Product Found",
+                    "value": {
+                      "data": {
+                        "product_data": [
+                          {
+                            "id_tie_fecha_valor": "2023-09-04",
+                            "id_cli_cliente": "123",
+                            "desc_ga_nombre_producto": "Product A"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Product Not Found": {
+                    "summary": "Product Not Found (Not found is considered a successful operation because no errors occurred)",
+                    "value": {
+                      "data": {
+                        "product_data": []
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "message": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "errors": [
+                    { "message": "Invalid query." }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

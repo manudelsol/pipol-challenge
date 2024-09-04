@@ -5,18 +5,20 @@ from data_service.schema import product_schema
 from flask_graphql import GraphQLView
 app = Flask(__name__)
 
-# swagger setup # Path to your Swagger JSON file
-SWAGGER_URL = '/api/docs'
-API_URL = '/swagger/swagger_spec.json'
+# Swagger UI setup
+SWAGGER_URL = '' # so the home screen is the swagger UI
+API_URL = '/static/swagger_spec.json'  # URL for exposing Swagger spec
+
 swaggerui_blueprint = get_swaggerui_blueprint(
     SWAGGER_URL,
     API_URL,
-    config={
-        'app_name': "Graphql API for Pipol Challenge"
-    },
+    config={  # Swagger UI config overrides
+        'app_name': "Flask GraphQL API"
+    }
 )
 
 app.register_blueprint(swaggerui_blueprint)
+
 
 app.add_url_rule(
     '/graphql',
@@ -26,10 +28,6 @@ app.add_url_rule(
         graphiql=True  # Enable GraphiQL interface
     )
 )
-
-@app.route("/")
-def test():
-    return "<h1>1st commit running?<h1>"
 
 if __name__ == "__main__":
     app.run()
