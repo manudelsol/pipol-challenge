@@ -84,4 +84,31 @@ curl -X POST \
 
 This query fetches `idTieFechaValor` and `descGaSkuProducto` fields for products where `descGaSkuProducto` contains the letter "K".
 
+## Queryable Fields
+The following fields are available for querying in the productData query:
+```
+idTieFechaValor
+idCliCliente
+idGaVista
+idGaTipoDispositivo
+idGaFuenteMedio
+descGaSkuProducto
+descGaCategoriaProducto
+fcAgregadoCarritoCant
+fcIngresoProductoMonto
+fcRetiradoCarritoCant
+fcDetalleProductoCant
+fcProductoCant
+descGaNombreProducto
+fcVisualizacionesPagCant
+flagPipol
+sasasa
+idGaProducto
+descGaNombreProducto1
+descGaSkuProducto1
+descGaMarcaProducto
+descGaCodProducto
+descCategoriaProducto
+descCategoriaProdPrincipal
+```
 ---
