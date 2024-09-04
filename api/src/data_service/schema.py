@@ -6,7 +6,7 @@ from pathlib import Path
 
 from . import csv_reader
 
-csv_file_path = os.path.join(Path(__file__).resolve().parent.parent.parent.parent, 'datasample2.csv')
+csv_file_path = os.path.join(os.getcwd(), 'datasample.csv')
 
 csv_data = csv_reader.read_csv_from_file(csv_file_path)
 
