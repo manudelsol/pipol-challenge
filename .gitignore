@@ -9,3 +9,5 @@ swagger/.env
 .DS_Store
 
 __pycache__/
+
+datasample2.csv
